@@ -766,7 +766,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jumpForce: 10
-  groundCheck: {fileID: 0}
+  groundCheck: {fileID: 1835909220}
 --- !u!114 &1835909220
 MonoBehaviour:
   m_ObjectHideFlags: 0

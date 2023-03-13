@@ -30,6 +30,7 @@ public class CharacterJump : MonoBehaviour
         if (jumping){
             jumpTime += Time.deltaTime;
         }
+				// TODO WaitFor and see if still holding button
         if ((Input.GetKeyUp(KeyCode.Space) | jumpTime < fullTime) & jumping){
             jumping = false;
             Debug.Log(jumpTime);
