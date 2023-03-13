@@ -8,22 +8,21 @@ public class CharacterJump : MonoBehaviour
     public float jumpForce; 
     float jumpTime;
     float fullTime = 0.02f;
-    
-    float distToGround;
+
+		public GroundCheck groundCheck;
 
     Rigidbody2D rb2d;
     // Start is called before the first frame update
     void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
-        distToGround = GetComponent<BoxCollider2D>().bounds.extents.y;
     }
 
     // Update is called once per frame
     void Update()
     {
         bool jumping = false;
-        bool grounded = isGrounded();
+        bool grounded = groundCheck.isGrounded;
         if (Input.GetKeyDown(KeyCode.Space) & grounded){
             jumping = true;
             grounded = false;
@@ -45,7 +44,4 @@ public class CharacterJump : MonoBehaviour
         }
     }
 
-    bool isGrounded() {
-        return Physics.Raycast(transform.position, Vector2.down, distToGround + 0.1f);
-    }
 }
