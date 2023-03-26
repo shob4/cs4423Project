@@ -10,6 +10,8 @@ public class CharacterJump : MonoBehaviour
     float fullTime = 0.02f;
 
 		public GroundCheck groundCheck;
+		bool jumping = false;
+		// may not do anything
 
     Rigidbody2D rb2d;
     // Start is called before the first frame update
@@ -21,7 +23,6 @@ public class CharacterJump : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        bool jumping = false;
         bool grounded = groundCheck.isGrounded;
         if (Input.GetKeyDown(KeyCode.Space) & grounded){
             jumping = true;
