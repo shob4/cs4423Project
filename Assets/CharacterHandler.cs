@@ -21,11 +21,15 @@ public class CharacterHandler : MonoBehaviour
 		float delayBetweenPresses = 0.25f;
 		bool pressedFirstTime = false;
 		float lastPressedTime;
+		float dashDistance = 1.5f;
+		float dashTime = 10;
+		CharacterDash characterDash;
 
     // Start is called before the first frame update
     void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
+				characterDash = new CharacterDash();
     }
 
     // Update is called once per frame
@@ -40,7 +44,7 @@ public class CharacterHandler : MonoBehaviour
 								    {
 												pressedFirstTime = false;
 												// TODO fixed distance and speed dash
-												StartCoroutine(WaitFor.Frames(10));
+												characterDash.Dash(rb2d, dashDistance, dashTime);
 										}
 						}
 						else {
