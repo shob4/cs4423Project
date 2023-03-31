@@ -22,7 +22,7 @@ public class CharacterHandler : MonoBehaviour
 		bool pressedFirstTime = false;
 		float lastPressedTime;
 		float dashDistance = 10f;
-		float dashTime = .15f;
+		float dashTime = .5f;
 
     // Start is called before the first frame update
     void Start()
@@ -43,7 +43,7 @@ public class CharacterHandler : MonoBehaviour
 												pressedFirstTime = false;
 												float direction = Input.GetAxis("Horizontal");
 												// TODO fixed distance and speed dash
-												Dash(rb2d, dashDistance, dashTime, direction);
+												StartCoroutine(Dash(rb2d, dashDistance, dashTime, direction));
 										}
 						}
 						else {
@@ -63,8 +63,16 @@ public class CharacterHandler : MonoBehaviour
 						Vector2 endPosition = rb.position + new Vector2(direction * dashDistance, 0f);
 						Vector2 newVelocity = (endPosition - rb.position) / dashTime;
 						float elapsedTime = 0f;
+
+						// for making smoother dash
+						AnimationCurve curve = new AnimationCurve(
+														new Keyframe(0, 0, 0, 2),
+														new Keyframe(0.5f, 1, 2, 0),
+														new Keyframe(1, 1, 0, 0));
+
 						while (elapsedTime < dashTime) {
-										rb.position = Vector2.Lerp(rb.position, endPosition, (elapsedTime / dashTime));
+										float t = curve.Evaluate (elapsedTime / dashTime);
+										rb.position = Vector2.Lerp(rb.position, endPosition, t);
 										elapsedTime += Time.fixedDeltaTime;
 										yield return null;
 						}
