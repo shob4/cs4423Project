@@ -45,5 +45,4 @@ public class CharacterJump : MonoBehaviour
             rb2d.AddForce(new Vector2(0, 2f) * jumpForce, ForceMode2D.Impulse);
         }
     }
-
 }
