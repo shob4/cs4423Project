@@ -60,6 +60,7 @@ public class CharacterHandler : MonoBehaviour
     }
 
 		IEnumerator Dash(Rigidbody2D rb, float dashDistance, float dashTime, float direction){
+						rb.velocity = new Vector2(0, 0);
 						Vector2 endPosition = rb.position + new Vector2(direction * dashDistance, 0f);
 						Vector2 newVelocity = (endPosition - rb.position) / dashTime;
 						float elapsedTime = 0f;
