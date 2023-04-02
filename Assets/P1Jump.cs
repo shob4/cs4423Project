@@ -8,10 +8,12 @@ public class P1Jump : MonoBehaviour
     public float jumpForce; 
     float jumpTime;
     float fullTime = 0.02f;
+    public int jumpSquat = 3;
+    public int action;
 
-		public GroundCheck groundCheck;
-		bool jumping = false;
-		// may not do anything
+    public GroundCheck groundCheck;
+    bool jumping = false;
+    // may not do anything
 
     Rigidbody2D rb2d;
     // Start is called before the first frame update
@@ -27,16 +29,19 @@ public class P1Jump : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.W) & grounded){
             jumping = true;
             grounded = false;
+            action = 1;
         } 
         if (jumping){
             jumpTime += Time.deltaTime;
         }
-				// TODO WaitFor and see if still holding button
-        if ((Input.GetKeyUp(KeyCode.W) | jumpTime < fullTime) & jumping){
+        WaitFor.Frames(jumpSquat);
+        if (jumpTime < fullTime & jumping){
             jumping = false;
             Debug.Log(jumpTime);
             jumpTime = 0;
             rb2d.AddForce(new Vector2(0, 1) * jumpForce, ForceMode2D.Impulse);
+            // TODO figure out if else for air dashing. separate file?
+            // maybe use switch case for checking angle of jump
         }
         else if ((Input.GetKeyUp(KeyCode.W) | jumpTime > fullTime) & jumping){
             jumping = false;
