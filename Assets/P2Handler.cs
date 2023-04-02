@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CharacterHandler : MonoBehaviour
+public class P2Handler : MonoBehaviour
 {
     [Header("Movement")]
     public float speed = 10f;
@@ -33,7 +33,7 @@ public class CharacterHandler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-				if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.A))
+				if (Input.GetKeyDown(KeyCode.J) || Input.GetKeyDown(KeyCode.L))
 				{
 				    if (pressedFirstTime)
 				    {
@@ -41,7 +41,7 @@ public class CharacterHandler : MonoBehaviour
 								if (isDoublePress)
 								    {
 												pressedFirstTime = false;
-												float direction = Input.GetAxis("Horizontal");
+												float direction = Input.GetAxis("Horizontal2");
 												// TODO fixed distance and speed dash
 												StartCoroutine(Dash(rb2d, dashDistance, dashTime, direction));
 										}
@@ -56,7 +56,7 @@ public class CharacterHandler : MonoBehaviour
 				   pressedFirstTime = false;
 				}
 
-				rb2d.AddForce(new Vector2(Input.GetAxis("Horizontal"), 0) * speed * friction);
+				rb2d.AddForce(new Vector2(Input.GetAxis("Horizontal2"), 0) * speed * friction);
     }
 
 		IEnumerator Dash(Rigidbody2D rb, float dashDistance, float dashTime, float direction){

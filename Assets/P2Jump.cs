@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CharacterJump : MonoBehaviour
+public class P2Jump : MonoBehaviour
 {
     [Header("Jump Parameters")]
     public float jumpForce; 
@@ -24,7 +24,7 @@ public class CharacterJump : MonoBehaviour
     void Update()
     {
         bool grounded = groundCheck.isGrounded;
-        if (Input.GetKeyDown(KeyCode.Space) & grounded){
+        if (Input.GetKeyDown(KeyCode.I) & grounded){
             jumping = true;
             grounded = false;
         } 
@@ -32,13 +32,13 @@ public class CharacterJump : MonoBehaviour
             jumpTime += Time.deltaTime;
         }
 				// TODO WaitFor and see if still holding button
-        if ((Input.GetKeyUp(KeyCode.Space) | jumpTime < fullTime) & jumping){
+        if ((Input.GetKeyUp(KeyCode.I) | jumpTime < fullTime) & jumping){
             jumping = false;
             Debug.Log(jumpTime);
             jumpTime = 0;
             rb2d.AddForce(new Vector2(0, 1) * jumpForce, ForceMode2D.Impulse);
         }
-        else if ((Input.GetKeyUp(KeyCode.Space) | jumpTime > fullTime) & jumping){
+        else if ((Input.GetKeyUp(KeyCode.I) | jumpTime > fullTime) & jumping){
             jumping = false;
             Debug.Log(jumpTime);
             jumpTime = 0;
