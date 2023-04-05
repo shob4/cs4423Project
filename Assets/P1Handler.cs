@@ -24,15 +24,20 @@ public class P1Handler : MonoBehaviour
     float dashDistance = 10f;
     float dashTime = .5f;
 
+    public Hitbox hitbox;
     // Start is called before the first frame update
     void Start()
     {
       rb2d = GetComponent<Rigidbody2D>();
+      if (hitbox == null){
+        hitbox = GetComponentInChildren<Hitbox>();
+      }
     }
 
     // Update is called once per frame
     void Update()
     {
+      // basic movement
       if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.A))
       {
         if (pressedFirstTime)
@@ -57,6 +62,13 @@ public class P1Handler : MonoBehaviour
       }
 
       rb2d.AddForce(new Vector2(Input.GetAxis("Horizontal"), 0) * speed * friction);
+
+      if (Input.GetKeyDown(KeyCode.C)) {
+        hitbox.ActivateHitbox(true);
+      }
+      if (Input.GetKeyUp(KeyCode.C)) {
+        hitbox.ActivateHitbox(false);
+      }
     }
 
     IEnumerator Dash(Rigidbody2D rb, float dashDistance, float dashTime, float direction){
