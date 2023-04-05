@@ -206,6 +206,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: char1
       objectReference: {fileID: 0}
+    - target: {fileID: 6611899660798749130, guid: d50c42558e8c7694f92f27a048f8e35e, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 6783357361471381545, guid: d50c42558e8c7694f92f27a048f8e35e, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0.882
@@ -253,7 +257,6 @@ MonoBehaviour:
   maxSpeed: 15
   forceMultiplier: 10
   friction: 0.95
-  Character: Player
 --- !u!114 &172509630
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -848,6 +851,44 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &759328346 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7434226507763044989, guid: d50c42558e8c7694f92f27a048f8e35e, type: 3}
+  m_PrefabInstance: {fileID: 172509627}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &759328349
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 759328346}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef15b99bce49b824399f50abe5fb11b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  otherObjectTag: Player
+  rotationAmount: 180
+--- !u!1 &1581101101 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7434226507763044989, guid: d50c42558e8c7694f92f27a048f8e35e, type: 3}
+  m_PrefabInstance: {fileID: 5934250184465790111}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1581101104
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1581101101}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef15b99bce49b824399f50abe5fb11b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  otherObjectTag: Player
+  rotationAmount: 180
 --- !u!1 &1835909209 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6611899660798749130, guid: d50c42558e8c7694f92f27a048f8e35e, type: 3}
@@ -890,7 +931,6 @@ MonoBehaviour:
   maxSpeed: 15
   forceMultiplier: 10
   friction: 0.95
-  Character: Player
 --- !u!114 &1835909215
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1125,6 +1165,10 @@ PrefabInstance:
     - target: {fileID: 6611899660798749130, guid: d50c42558e8c7694f92f27a048f8e35e, type: 3}
       propertyPath: m_Name
       value: char2_partial_color
+      objectReference: {fileID: 0}
+    - target: {fileID: 6611899660798749130, guid: d50c42558e8c7694f92f27a048f8e35e, type: 3}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 7434226507763044989, guid: d50c42558e8c7694f92f27a048f8e35e, type: 3}
       propertyPath: m_TagString
