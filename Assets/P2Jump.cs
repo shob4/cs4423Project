@@ -15,6 +15,8 @@ public class P2Jump : MonoBehaviour
     bool jumping = false;
     // may not do anything
 
+    bool firstInput;
+
     Rigidbody2D rb2d;
     // Start is called before the first frame update
     void Start()
@@ -25,6 +27,7 @@ public class P2Jump : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // first jump
         bool grounded = groundCheck.isGrounded;
         if (Input.GetKeyDown(KeyCode.I) & grounded){
             jumping = true;
@@ -42,11 +45,18 @@ public class P2Jump : MonoBehaviour
             rb2d.AddForce(new Vector2(0, 1) * (jumpForce * 2), ForceMode2D.Impulse);
             // TODO figure out if else for air dashes
         }
-        else if ((Input.GetKeyUp(KeyCode.I) | jumpTime > fullTime) & jumping){
+        else{
             jumping = false;
             Debug.Log(jumpTime);
             jumpTime = 0;
             rb2d.AddForce(new Vector2(0, 2f) * jumpForce, ForceMode2D.Impulse);
+            // only after jumping
+            if (action > 0 && Input.GetKeyDown(KeyCode.L)){
+              if (firstInput) {
+                //TODO dash
+              }
+            }
+
         }
     }
 }

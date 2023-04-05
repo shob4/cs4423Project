@@ -47,7 +47,6 @@ public class P1Handler : MonoBehaviour
           {
             pressedFirstTime = false;
             float direction = Input.GetAxis("Horizontal");
-            // TODO fixed distance and speed dash
             StartCoroutine(Dash(rb2d, dashDistance, dashTime, direction));
           }
         }

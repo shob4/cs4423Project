@@ -25,6 +25,7 @@ public class P1Jump : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // first jump
         bool grounded = groundCheck.isGrounded;
         if (Input.GetKeyDown(KeyCode.W) & grounded){
             jumping = true;
@@ -43,7 +44,7 @@ public class P1Jump : MonoBehaviour
             // TODO figure out if else for air dashing. separate file?
             // maybe use switch case for checking angle of jump
         }
-        else if ((Input.GetKeyUp(KeyCode.W) | jumpTime > fullTime) & jumping){
+        else{
             jumping = false;
             Debug.Log(jumpTime);
             jumpTime = 0;
