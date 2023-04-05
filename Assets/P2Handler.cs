@@ -12,7 +12,6 @@ public class P2Handler : MonoBehaviour
 
     [Header("Outside Object")]
     Rigidbody2D rb2d;
-    public string Character;
 
     [Header("Text Elements")]
     int trueHealth;
@@ -92,18 +91,6 @@ public class P2Handler : MonoBehaviour
       // rb2d.MovePosition(transform.position + (new Vector3(Input.GetAxis("Horizontal"), 0, 0) * Time.fixedDeltaTime * speed * friction));
       if (rb2d.velocity.magnitude > maxSpeed){
         rb2d.velocity = rb2d.velocity.normalized * maxSpeed;
-      }
-    }
-
-    private void OnTriggerEnter2D(Collider2D other){
-      if (other.gameObject.CompareTag(Character)){
-        transform.Rotate(new Vector3(1f, 0f, 0f));
-      }
-    }
-
-    private void OnTriggerExit2D(Collider2D other){
-      if (other.gameObject.CompareTag(Character)){
-        transform.Rotate(new Vector3(-1f, 0f, 0f));
       }
     }
 }

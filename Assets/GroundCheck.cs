@@ -5,12 +5,12 @@ using UnityEngine;
 public class GroundCheck : MonoBehaviour
 {
 
-				public bool isGrounded;
-				public Transform groundCheck;
-        public float groundCheckRadius = 2f;
-        public LayerMask whatIsGround;
+  public bool isGrounded;
+  public Transform groundCheck;
+  public float groundCheckRadius = 0.1f;
+  public LayerMask whatIsGround;
 
-				private void FixedUpdate() {
-								isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, whatIsGround);
-				}
+  private void FixedUpdate() {
+    isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, whatIsGround);
+  }
 }
