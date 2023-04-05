@@ -63,10 +63,10 @@ public class P1Handler : MonoBehaviour
 
       rb2d.AddForce(new Vector2(Input.GetAxis("Horizontal"), 0) * speed * friction);
 
-      if (Input.GetKeyDown(KeyCode.C)) {
+      if (Input.GetKeyDown(KeyCode.X)) {
         hitbox.ActivateHitbox(true);
       }
-      if (Input.GetKeyUp(KeyCode.C)) {
+      if (Input.GetKeyUp(KeyCode.X)) {
         hitbox.ActivateHitbox(false);
       }
     }
