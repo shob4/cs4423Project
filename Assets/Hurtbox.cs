@@ -17,7 +17,8 @@ public class Hurtbox : MonoBehaviour
     }
     // getting the damage from the hit box that enters it
     void OnTriggerEnter2D(Collider2D other){
-      if (other.gameObject.tag == "hitbox"){
+      Debug.Log("triggered");
+      if (other.gameObject.tag == "Hitbox"){
         Hitbox hitbox = other.gameObject.GetComponent<Hitbox>();
         int damage = hitbox.damage;
         Debug.Log(damage);
