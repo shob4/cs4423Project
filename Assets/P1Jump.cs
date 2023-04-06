@@ -44,7 +44,7 @@ public class P1Jump : MonoBehaviour
             // TODO figure out if else for air dashing. separate file?
             // maybe use switch case for checking angle of jump
         }
-        else{
+        else if ((Input.GetKeyUp(KeyCode.I) | jumpTime > fullTime) & jumping){
             jumping = false;
             Debug.Log(jumpTime);
             jumpTime = 0;

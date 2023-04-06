@@ -64,7 +64,7 @@ public class P2Handler : MonoBehaviour
       if (Input.GetKeyDown(KeyCode.B)) {
         hitbox.ActivateHitbox(true);
       }
-      if (Input.GetKeyUp(KeyCode.C)) {
+      if (Input.GetKeyUp(KeyCode.B)) {
         hitbox.ActivateHitbox(false);
       }
     }
@@ -75,6 +75,7 @@ public class P2Handler : MonoBehaviour
       Vector2 newVelocity = (endPosition - rb.position) / dashTime;
       float elapsedTime = 0f;
       // for making smoother dash
+      // doesn't work well
       AnimationCurve curve = new AnimationCurve(
           new Keyframe(0, 0, 0, 2),
           new Keyframe(0.5f, 1, 2, 0),
