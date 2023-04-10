@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class P1Jump : MonoBehaviour
 {
+
+    public P1Handler p1handler;
+
     [Header("Jump Parameters")]
     public float jumpForce; 
     float jumpTime;
@@ -31,6 +34,7 @@ public class P1Jump : MonoBehaviour
             jumping = true;
             grounded = false;
             action = 1;
+            p1handler.isActive = false;
         } 
         if (jumping){
             jumpTime += Time.deltaTime;

@@ -16,6 +16,7 @@ public class P2Jump : MonoBehaviour
     // may not do anything
 
     bool firstInput;
+    public P2Handler p2handler;
 
     Rigidbody2D rb2d;
     // Start is called before the first frame update
@@ -33,6 +34,7 @@ public class P2Jump : MonoBehaviour
             jumping = true;
             grounded = false;
             action = 1;
+            p2handler.isActive = false;
         } 
         if (jumping){
             jumpTime += Time.deltaTime;

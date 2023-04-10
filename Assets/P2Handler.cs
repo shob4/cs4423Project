@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class P2Handler : MonoBehaviour
 {
+    public bool isActive;
+    
     [Header("Movement")]
     public float speed = 10f;
     public float maxSpeed = 15f;
     public float forceMultiplier = 10f;
     public float friction = .95f;
+    private bool isRunning = false;
 
     [Header("Outside Object")]
     Rigidbody2D rb2d;
@@ -37,35 +40,42 @@ public class P2Handler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-      if (Input.GetKeyDown(KeyCode.J) || Input.GetKeyDown(KeyCode.L))
-      {
-        if (pressedFirstTime)
+      if (isActive){
+        if (Input.GetKeyDown(KeyCode.J) || Input.GetKeyDown(KeyCode.L))
         {
-          bool isDoublePress = Time.time - lastPressedTime <= delayBetweenPresses;
-          if (isDoublePress)
+          if (pressedFirstTime)
           {
-            pressedFirstTime = false;
-            float direction = Input.GetAxis("Horizontal2");
-            StartCoroutine(Dash(rb2d, dashDistance, dashTime, direction));
+            bool isDoublePress = Time.time - lastPressedTime <= delayBetweenPresses;
+            if (isDoublePress)
+            {
+              pressedFirstTime = false;
+              float direction = Input.GetAxis("Horizontal2");
+              StartCoroutine(Dash(rb2d, dashDistance, dashTime, direction));
+            }
           }
+          else {
+            pressedFirstTime = true;
+          }
+          lastPressedTime = Time.time;
         }
-        else {
-          pressedFirstTime = true;
+        if (pressedFirstTime && Time.time - lastPressedTime > delayBetweenPresses)
+        {
+          pressedFirstTime = false;
         }
-        lastPressedTime = Time.time;
-      }
-      if (pressedFirstTime && Time.time - lastPressedTime > delayBetweenPresses)
-      {
-        pressedFirstTime = false;
-      }
-
-      rb2d.AddForce(new Vector2(Input.GetAxis("Horizontal2"), 0) * speed * friction);
-
-      if (Input.GetKeyDown(KeyCode.B)) {
-        hitbox.ActivateHitbox(true);
-      }
-      if (Input.GetKeyUp(KeyCode.B)) {
-        hitbox.ActivateHitbox(false);
+  
+        if (Input.GetKeyDown(KeyCode.B) || isRunning == true){
+          rb2d.AddForce(new Vector2(Input.GetAxis("Horizontal2"), 0) * speed * friction);
+        }
+        else{
+          rb2d.AddForce(new Vector2(Input.GetAxis("Horizontal2"), 0) * (speed / 3) * friction);
+        }
+  
+        if (Input.GetKeyDown(KeyCode.B)) {
+          hitbox.ActivateHitbox(true);
+        }
+        if (Input.GetKeyUp(KeyCode.B)) {
+          hitbox.ActivateHitbox(false);
+        }
       }
     }
 
