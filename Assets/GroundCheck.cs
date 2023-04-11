@@ -7,7 +7,7 @@ public class GroundCheck : MonoBehaviour
 
   public bool isGrounded;
   public Transform groundCheck;
-  public float groundCheckRadius = 0.1f;
+  public float groundCheckRadius = 0.01f;
   public LayerMask whatIsGround;
 
   private void FixedUpdate() {

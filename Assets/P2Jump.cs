@@ -23,6 +23,7 @@ public class P2Jump : MonoBehaviour
     void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
+        p2handler = GetComponent<P2Handler>();
     }
 
     // Update is called once per frame
@@ -58,7 +59,10 @@ public class P2Jump : MonoBehaviour
                 //TODO dash
 //              }
 //            }
-
+        }
+        WaitFor.Frames(jumpSquat);
+        if (grounded){
+          p2handler.isActive = true;
         }
     }
 }

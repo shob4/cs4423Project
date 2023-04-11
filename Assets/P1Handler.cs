@@ -70,7 +70,10 @@ public class P1Handler : MonoBehaviour
           rb2d.AddForce(new Vector2(Input.GetAxis("Horizontal"), 0) * speed * friction);
         }
         else {
-          rb2d.AddForce(new Vector2(Input.GetAxis("Horizontal"), 0) * (speed / 3) * friction);
+          rb2d.AddForce(new Vector2(Input.GetAxis("Horizontal"), 0) * (speed / 2) * friction);
+        }
+        if (Input.GetKeyUp(KeyCode.D) || Input.GetKeyUp(KeyCode.A)){
+          isRunning = false;
         }
   
         if (Input.GetKeyDown(KeyCode.X)) {

@@ -23,6 +23,7 @@ public class P1Jump : MonoBehaviour
     void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
+        p1handler = GetComponent<P1Handler>();
     }
 
     // Update is called once per frame
@@ -53,6 +54,10 @@ public class P1Jump : MonoBehaviour
             Debug.Log(jumpTime);
             jumpTime = 0;
             rb2d.AddForce(new Vector2(0, 2f) * jumpForce, ForceMode2D.Impulse);
+        }
+        WaitFor.Frames(jumpSquat);
+        if (grounded){
+          p1handler.isActive = true;
         }
     }
 }
