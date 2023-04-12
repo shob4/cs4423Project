@@ -16,14 +16,12 @@ public class P2Jump : MonoBehaviour
     // may not do anything
 
     bool firstInput;
-    public P2Handler p2handler;
 
     Rigidbody2D rb2d;
     // Start is called before the first frame update
     void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
-        p2handler = GetComponent<P2Handler>();
     }
 
     // Update is called once per frame
@@ -35,12 +33,11 @@ public class P2Jump : MonoBehaviour
             jumping = true;
             grounded = false;
             action = 1;
-            p2handler.isActive = false;
         } 
         if (jumping){
             jumpTime += Time.deltaTime;
+            WaitFor.Frames(jumpSquat);
         }
-        WaitFor.Frames(jumpSquat);
         if (jumpTime < fullTime & jumping){
             jumping = false;
             Debug.Log(jumpTime);
@@ -59,10 +56,6 @@ public class P2Jump : MonoBehaviour
                 //TODO dash
 //              }
 //            }
-        }
-        WaitFor.Frames(jumpSquat);
-        if (grounded){
-          p2handler.isActive = true;
         }
     }
 }

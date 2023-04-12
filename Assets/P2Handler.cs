@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class P2Handler : MonoBehaviour
 {
+    public GroundCheck groundCheck;
     public bool isActive;
     
     [Header("Movement")]
@@ -31,6 +32,7 @@ public class P2Handler : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        groundCheck = GetComponent<GroundCheck>();
         rb2d = GetComponent<Rigidbody2D>();
         if (hitbox == null){
           hitbox = GetComponentInChildren<Hitbox>();
@@ -40,6 +42,7 @@ public class P2Handler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+      isActive = groundCheck.isGrounded;
       if (isActive){
         if (Input.GetKeyDown(KeyCode.J) || Input.GetKeyDown(KeyCode.L))
         {
