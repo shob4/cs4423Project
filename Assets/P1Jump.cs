@@ -44,12 +44,22 @@ public class P1Jump : MonoBehaviour
             rb2d.AddForce(new Vector2(0, 1) * jumpForce, ForceMode2D.Impulse);
             // TODO figure out if else for air dashing. separate file?
             // maybe use switch case for checking angle of jump
+            if (Input.GetKeyDown(KeyCode.Z) & action > 0){
+                Debug.Log("air dash");
+                rb2d.AddForce(new Vector2(Input.GetAxis("Horizontal") * 5, Input.GetAxis("Vertical") * 5));
+                action -= 1;
+            }
         }
         else if ((Input.GetKeyUp(KeyCode.I) | jumpTime > fullTime) & jumping){
             jumping = false;
             Debug.Log(jumpTime);
             jumpTime = 0;
             rb2d.AddForce(new Vector2(0, 2f) * jumpForce, ForceMode2D.Impulse);
+            if (Input.GetKeyDown(KeyCode.Z) & action > 0){
+                Debug.Log("air dash");
+                rb2d.AddForce(new Vector2(Input.GetAxis("Horizontal") * 5, Input.GetAxis("Vertical") * 5));
+                action -= 1;
+            }
         }
     }
 }
