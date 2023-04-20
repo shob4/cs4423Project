@@ -45,7 +45,7 @@ public class P2Jump : MonoBehaviour
             rb2d.AddForce(new Vector2(0, 1) * (jumpForce * 2), ForceMode2D.Impulse);
             // TODO figure out if else for air dashes
             if (Input.GetKeyDown(KeyCode.B) & action > 0){
-                rb2d.AddForce(new Vector2(Input.GetAxis("Horizontal2") * 5, Input.GetAxis("Vertical2") * 5));
+                rb2d.AddForce(new Vector2(Input.GetAxis("Horizontal2") * 100, Input.GetAxis("Vertical2") * 100));
                 action -= 1;
             }
         }
@@ -55,7 +55,7 @@ public class P2Jump : MonoBehaviour
             jumpTime = 0;
             rb2d.AddForce(new Vector2(0, 2f) * jumpForce, ForceMode2D.Impulse);
             if (Input.GetKeyDown(KeyCode.B) & action > 0){
-                rb2d.AddForce(new Vector2(Input.GetAxis("Horizontal2") * 5, Input.GetAxis("Vertical2") * 5));
+                rb2d.AddForce(new Vector2(Input.GetAxis("Horizontal2") * 100, Input.GetAxis("Vertical2") * 100));
                 action -= 1;
             }
             // only after jumping

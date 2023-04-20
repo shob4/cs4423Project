@@ -89,31 +89,24 @@ public class P1Handler : MonoBehaviour
     }
 
     IEnumerator Dash(Rigidbody2D rb, float dashDistance, float dashTime, float direction){
-      rb.velocity = new Vector2(0, 0);
-      Vector2 endPosition = rb.position + new Vector2(direction * dashDistance, 0f);
-      Vector2 newVelocity = (endPosition - rb.position) / dashTime;
+      // TODO change to add force
+      // move on vector based on input
+      // multiply dash by speed, then divide speed by dash
+      // while (t < dashTime) {
+      // t += Time.fixedDeltatTime;
+      // yield return null;
+      //
+      // decrease distance
       float elapsedTime = 0f;
 
-      // for making smoother dash
-      AnimationCurve curve = new AnimationCurve(
-          new Keyframe(0, 0, 0, 2),
-          new Keyframe(0.5f, 1, 2, 0),
-          new Keyframe(1, 1, 0, 0));
-
+      speed = speed * (dashDistance / dashTime);
       while (elapsedTime < dashTime) {
-        float t = curve.Evaluate (elapsedTime / dashTime);
-        rb.position = Vector2.Lerp(rb.position, endPosition, t);
         elapsedTime += Time.fixedDeltaTime;
         yield return null;
       }
 
-      rb.position = endPosition;
+      speed = speed / (dashDistance / dashTime);
 
-      Vector2 postDashVelocity = rb.velocity;
-      if (postDashVelocity.magnitude > newVelocity.magnitude){
-        postDashVelocity = postDashVelocity.normalized * newVelocity.magnitude;
-      }
-      rb.velocity = newVelocity + postDashVelocity;
     }
 
     void FixedUpdate(){
