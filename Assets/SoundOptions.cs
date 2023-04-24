@@ -12,9 +12,17 @@ public class SoundOptions : MonoBehaviour
   public Slider FXSlider;
 
   void Start(){
-    masterSlider.value = PlayerPrefs.GetFloat("MasterVolume");
-    musicSlider.value = PlayerPrefs.GetFloat("MusicVolume");
-    FXSlider.value = PlayerPrefs.GetFloat("FXVolume");
+    if (PlayerPrefs.GetInt("set first time volume") == 0){
+      PlayerPrefs.SetInt("set first time volume", 1);
+      masterSlider.value = .25f;
+      musicSlider.value = .25f;
+      FXSlider.value = .25f;
+    }
+    else {
+      masterSlider.value = PlayerPrefs.GetFloat("MasterVolume");
+      musicSlider.value = PlayerPrefs.GetFloat("MusicVolume");
+      FXSlider.value = PlayerPrefs.GetFloat("FXVolume");
+    }
   }
 
   public void SetMasterVolume(){
