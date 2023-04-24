@@ -7,15 +7,21 @@ public class ScreenOptions : MonoBehaviour
 {
   public Dropdown resolutionDropdown;
   Resolution[] resolutions;
+  public Toggle isFullScreen;
   void Start(){
     resolutions = Screen.resolutions;
+    isFullScreen.isOn = Screen.fullScreen;
     for(int i = 0; i < resolutions.Length; i++) {
       string resolutionString = resolutions[i].width.ToString() + "x" + resolutions[i].height.ToString();
       resolutionDropdown.options.Add(new Dropdown.OptionData(resolutionString));
+
+      if (resolutions[i].height == Screen.currentResolution.width && resolutions[i].height == Screen.currentResolution.height){
+        resolutionDropdown.value = i;
+      }
     }
   }
 
   public void SetResolution(){
-    Screen.SetResolution(resolutions[resolutionDropdown.value].width, resolutions[resolutionDropdown.value].height, true);
+    Screen.SetResolution(resolutions[resolutionDropdown.value].width, resolutions[resolutionDropdown.value].height, isFullScreen.isOn);
   }
 }
