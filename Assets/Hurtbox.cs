@@ -27,11 +27,11 @@ public class Hurtbox : MonoBehaviour
         rb2d.AddForce(new Vector3(hitbox.force.x, hitbox.force.y, 0));
         if (Input.GetKeyDown(KeyCode.M)){
           damage = hitbox.damage * .05f;
-          healthBars.SetBar2OverTime(damage);
+          healthBars.SetBar2Progress(damage);
         }
         else {
           damage = hitbox.damage;
-          healthBars.SetBar2OverTime(damage);
+          healthBars.SetBar2Progress(damage);
         }
         Debug.Log(damage);
       }
@@ -41,11 +41,11 @@ public class Hurtbox : MonoBehaviour
         rb2d.AddForce(new Vector3(hitbox.force.x, hitbox.force.y, 0));
         if (Input.GetKeyDown(KeyCode.C)){
           damage = hitbox.damage * .05f;
-          healthBars.SetBar1OverTime(damage);
+          healthBars.SetBar1Progress(damage);
         }
         else {
           damage = hitbox.damage;
-          healthBars.SetBar1OverTime(damage);
+          healthBars.SetBar1Progress(damage);
         }
         Debug.Log(damage);
       }
