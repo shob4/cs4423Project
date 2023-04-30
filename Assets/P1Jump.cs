@@ -46,7 +46,7 @@ public class P1Jump : MonoBehaviour
             // maybe use switch case for checking angle of jump
             if (Input.GetKeyDown(KeyCode.Z) & action > 0){
                 Debug.Log("air dash");
-                rb2d.AddForce(new Vector2(Input.GetAxis("Horizontal") * 10000000, Input.GetAxis("Vertical") * 10000000));
+                rb2d.AddForce(new Vector2(Input.GetAxisRaw("Horizontal") * 10, Input.GetAxisRaw("Vertical") * 10));
                 action -= 1;
             }
         }
@@ -57,7 +57,7 @@ public class P1Jump : MonoBehaviour
             rb2d.AddForce(new Vector2(0, 2f) * jumpForce, ForceMode2D.Impulse);
             if (Input.GetKeyDown(KeyCode.Z) & action > 0){
                 Debug.Log("air dash");
-                rb2d.AddForce(new Vector2(Input.GetAxis("Horizontal") * 10000000, Input.GetAxis("Vertical") * 10000000));
+                rb2d.AddForce(new Vector2(Input.GetAxisRaw("Horizontal") * 10, Input.GetAxisRaw("Vertical") * 10));
                 action -= 1;
             }
         }
