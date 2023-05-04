@@ -41,7 +41,7 @@ public class HealthBars : MonoBehaviour
     }
 
     public void SetBar2OverTime(float progressToBeMade, float currentProgress){
-      float t = Time.deltaTime;
+      float t = 0f;
       float percent;
       Vector3 startPosition = new Vector3(currentProgress, 1, 1);
       Vector3 endPosition = new Vector3(currentProgress - progressToBeMade, 1, 1);
@@ -63,7 +63,7 @@ public class HealthBars : MonoBehaviour
 
     public void SetBar1OverTime(float progressToBeMade, float currentProgress){
       float percent;
-      float t = Time.deltaTime;
+      float t = 0f;
       Vector3 startPosition = new Vector3(currentProgress, 1, 1);
       Vector3 endPosition = new Vector3(currentProgress - progressToBeMade, 1, 1);
       while (t < timer) {
