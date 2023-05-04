@@ -10,6 +10,7 @@ public class SoundOptions : MonoBehaviour
   public Slider masterSlider;
   public Slider musicSlider;
   public Slider FXSlider;
+  public AudioSource effect;
 
   void Start(){
     if (PlayerPrefs.GetInt("set first time volume") == 0){
@@ -35,6 +36,9 @@ public class SoundOptions : MonoBehaviour
 
   public void SetFXVolume(){
     SetVolume("FXVolume", FXSlider.value);
+    // TODO play sound effect
+    effect.pitch = Random.Range(.9f, 1.1f);
+    effect.Play();
   }
 
   void SetVolume(string name, float value){

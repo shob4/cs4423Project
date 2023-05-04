@@ -5,9 +5,9 @@ using UnityEngine;
 public class Hitbox : MonoBehaviour
 {
     // should be determined when instantiated
-    public float damage = 10f;
+    public float damage = 25f;
     Collider2D c2d;
-    public Vector2 force = new Vector2(100f, 100f);
+    public Vector2 force = new Vector2(10000f, 1000f);
     // Start is called before the first frame update
     void Start()
     {

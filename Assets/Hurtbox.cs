@@ -7,6 +7,7 @@ public class Hurtbox : MonoBehaviour
     Rigidbody2D rb2d;
     HealthBars healthBars;
     float damage;
+    public AudioSource effect;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,6 +24,7 @@ public class Hurtbox : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other){
       Debug.Log("triggered");
       if (other.gameObject.tag == "Hibox1"){
+        effect.pitch = Random.Range(.9f, 1.1f);
         Debug.Log("check1");
         Hitbox hitbox = other.gameObject.GetComponent<Hitbox>();
         rb2d.AddForce(new Vector3(hitbox.force.x, hitbox.force.y, 0));
@@ -43,6 +45,7 @@ public class Hurtbox : MonoBehaviour
       }
 
       if (other.gameObject.tag == "Hitbox2"){
+        effect.pitch = Random.Range(.9f, 1.1f);
         Hitbox hitbox = other.gameObject.GetComponent<Hitbox>();
         rb2d.AddForce(new Vector3(hitbox.force.x, hitbox.force.y, 0));
         if (Input.GetKeyDown(KeyCode.C)){

@@ -12,4 +12,8 @@ public class UIMenu : MonoBehaviour
   public void CloseMenu(){
     GetComponent<Canvas>().enabled = false;
   }
+  
+  void Start(){
+    CloseMenu();
+  }
 }
