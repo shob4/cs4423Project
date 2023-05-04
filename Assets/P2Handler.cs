@@ -76,10 +76,10 @@ public class P2Handler : MonoBehaviour
           isRunning = false;
         }
   
-        if (Input.GetKeyDown(KeyCode.B)) {
+        if (Input.GetKeyDown(KeyCode.N)) {
           hitbox.ActivateHitbox(true);
         }
-        if (Input.GetKeyUp(KeyCode.B)) {
+        if (Input.GetKeyUp(KeyCode.N)) {
           hitbox.ActivateHitbox(false);
         }
       }
